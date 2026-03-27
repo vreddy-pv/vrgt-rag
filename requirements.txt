@@ -6,3 +6,8 @@ beautifulsoup4
 openai
 langchain-community
 langchain-text-splitters
+fastapi
+uvicorn
+streamlit
+requests
+watchdog
