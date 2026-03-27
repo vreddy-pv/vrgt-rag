@@ -29,7 +29,7 @@ The easiest way to use the application is with the automated file watcher.
 
 1.  **Start the Watcher**:
     ```bash
-    python watcher.py
+    sh scripts/start-watcher.sh
     ```
 2.  **Add Documents**: Simply drop your `.pdf`, `.docx`, or `.txt` files into the `../documents` directory. The watcher will automatically detect, process, and archive them.
     - Successfully processed files are moved to the `../archive` directory.
@@ -49,11 +49,11 @@ You can also process documents manually.
 
 1.  **Start the Backend API**:
     ```bash
-    uvicorn app:app --reload
+    sh scripts/start-api.sh
     ```
 2.  **Start the Frontend UI** (in a separate terminal):
     ```bash
-    streamlit run ui.py
+    sh scripts/start-ui.sh
     ```
     A browser window will open with the chat interface.
 
@@ -67,3 +67,9 @@ You can also process documents manually.
   ```bash
   python main.py --query "Your question here"
   ```
+
+## Scripts
+
+- `scripts/start-watcher.sh`: Starts the automated file ingestion service.
+- `scripts/start-api.sh`: Starts the backend FastAPI server for the web UI.
+- `scripts/start-ui.sh`: Starts the frontend Streamlit web interface.
