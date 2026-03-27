@@ -1,0 +1,8 @@
+langchain
+faiss-cpu
+pypdf
+python-docx
+beautifulsoup4
+openai
+langchain-community
+langchain-text-splitters
