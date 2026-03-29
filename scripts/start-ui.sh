@@ -2,4 +2,4 @@
 # Starts the RAG Streamlit UI.
 
 echo "Starting RAG UI..."
-streamlit run ui.py
+python -m streamlit run src/ui.py

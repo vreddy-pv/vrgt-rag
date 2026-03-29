@@ -2,4 +2,4 @@
 # Starts the RAG backend API server.
 
 echo "Starting RAG API server..."
-uvicorn app:app --reload
+uvicorn src.app:app --reload

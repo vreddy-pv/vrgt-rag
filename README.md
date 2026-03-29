@@ -31,7 +31,7 @@ The easiest way to use the application is with the automated file watcher.
     ```bash
     sh scripts/start-watcher.sh
     ```
-2.  **Add Documents**: Simply drop your `.pdf`, `.docx`, or `.txt` files into the `../documents` directory. The watcher will automatically detect, process, and archive them.
+2.  **Add Documents**: Simply drop your `.pdf`, `.docx`, `.pptx`, `.png`, `.jpg`, or `.txt` files into the `../documents` directory (relative to the `vrgt-rag` project). The watcher will automatically detect, process, and archive them.
     - Successfully processed files are moved to the `../archive` directory.
     - Failed files are moved to the `../error` directory.
 
@@ -42,7 +42,7 @@ You can also process documents manually.
 1.  **Place Documents**: Add your files to the `../documents` directory.
 2.  **Run Ingestion**:
     ```bash
-    python main.py --ingest
+    python -m src.main --ingest
     ```
 
 ### 3. Chat with your Documents (Web UI)
@@ -61,11 +61,11 @@ You can also process documents manually.
 
 - **Interactive Chat**:
   ```bash
-  python main.py --chat
+  python -m src.main --chat
   ```
 - **Single Question**:
   ```bash
-  python main.py --query "Your question here"
+  python -m src.main --query "Your question here"
   ```
 
 ## Scripts

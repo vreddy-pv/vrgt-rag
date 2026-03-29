@@ -11,3 +11,5 @@ uvicorn
 streamlit
 requests
 watchdog
+unstructured[easy_extra]
+

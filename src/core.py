@@ -3,29 +3,27 @@ import os
 import sys
 import io
 import shutil
-from langchain_community.document_loaders import PyPDFLoader, TextLoader, Docx2txtLoader
+from .document_loaders import get_loader
+
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import OllamaEmbeddings
 from langchain_community.vectorstores import FAISS
 
 # Force stdout to use UTF-8 encoding
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 # Define paths
-VECTOR_STORE_PATH = os.path.join(os.path.dirname(__file__), 'vector_store')
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
+VECTOR_STORE_PATH = os.path.join(PROJECT_ROOT, 'vector_store')
 
 def load_document(file_path):
-    """Loads a single document using the appropriate loader."""
-    if file_path.endswith(".pdf"):
-        loader = PyPDFLoader(file_path)
-    elif file_path.endswith(".docx"):
-        loader = Docx2txtLoader(file_path)
-    elif file_path.endswith(".txt"):
-        loader = TextLoader(file_path, encoding='utf-8')
-    else:
-        print(f"Unsupported file type: {file_path}")
+    """Loads a single document using the loader factory."""
+    print(f"Attempting to load document: {file_path}")
+    try:
+        loader = get_loader(file_path)
+        return loader.load()
+    except Exception as e:
+        print(f"An error occurred while loading {os.path.basename(file_path)}: {e}")
         return None
-    return loader.load()
 
 def split_documents_into_chunks(documents):
     """Splits a list of documents into smaller chunks."""
